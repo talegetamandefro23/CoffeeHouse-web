@@ -9,7 +9,7 @@ interface PageProps {
 }
 
 export default function Page({ children }: PageProps) {
-  const pathname = usePathname(); // Get the current route
+  const pathname = usePathname();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
@@ -18,71 +18,79 @@ export default function Page({ children }: PageProps) {
         <h1 className="text-2xl font-bold">Coffee House</h1>
 
         {/* Navigation Links */}
-        <nav className="flex gap-6">
+        <nav className="flex gap-6 items-center">
           <Link
             href="/dashboard/shop"
             className={`px-2 py-1 transition ${
               pathname === "/dashboard/shop"
-                ? "underline text-blue-500 font-semibold"
+                ? "underline text-dark-500 font-semibold"
                 : "text-dark-700 hover:text-yellow-900"
             }`}
           >
             Shop
           </Link>
 
-          {/* Our Story with Dropdown */}
+          {/* Our Story with Dropdown - Fix: Used flex for alignment */}
           <div
-            className="relative group"
+            className="relative flex items-center"
             onMouseEnter={() => setIsDropdownOpen(true)}
             onMouseLeave={() => setIsDropdownOpen(false)}
           >
             <Link
-              href="/"
+              href="/dashboard"
               className={`px-2 py-1 transition ${
-                pathname === "/"
-                  ? "underline text-blue-500 font-semibold"
+                pathname === "/dashboard"
+                  ? "underline text-dark-500 font-semibold"
                   : "text-dark-700 hover:text-yellow-900"
               }`}
             >
               Our Story
             </Link>
 
+            {/* Dropdown Menu - Positioned Below */}
             <div
-                    className={`absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg overflow-hidden transition-opacity duration-200 z-50 ${
-                      isDropdownOpen ? "opacity-100 visible" : "opacity-0 invisible"
-                    }`}
-                  >
-                    <Link
-                      href="/dashboard/our-mission"
-                      className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
-                    >
-                      Our Mission
-                    </Link>
-                    <Link
-                      href="/dashboard/our-team"
-                      className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
-                    >
-                      Our Team
-                    </Link>
-                                <Link
-                        href="/dashboard/about"
-                        className={`px-2 py-1 transition ${
-                          pathname === "/dashboard/about"
-                            ? "underline text-blue-500 font-semibold"
-                            : "text-dark-700 hover:text-yellow-900"
-                        }`}
-                      >
-                        About
-                      </Link>
-                  </div>
-
+              className={`absolute left-0 top-full mt-1 min-w-max bg-white shadow-lg rounded-lg overflow-hidden transition-all duration-200 z-50 ${
+                isDropdownOpen ? "opacity-100 visible" : "opacity-0 invisible"
+              }`}
+            >
+              <Link
+                href="/dashboard/our-story/our-mission"
+                className={`block px-4 py-2 text-gray-700 hover:bg-gray-200 ${
+                  pathname === "/dashboard/our-story/our-mission"
+                    ? "underline text-dark-500 font-semibold"
+                    : "text-gray-700 hover:text-yellow-900"
+                }`}
+              >
+                Our Mission
+              </Link>
+              <Link
+                href="/dashboard/our-story/our-team"
+                className={`block px-4 py-2 text-gray-700 hover:bg-gray-200 ${
+                  pathname === ""
+                    ? "underline text-dark-500 font-semibold"
+                    : "text-gray-700 hover:text-yellow-900"
+                }`}
+              >
+                Our Team
+              </Link>
+              <Link
+                href="/dashboard/our-story/about"
+                className={`block px-4 py-2 text-gray-700 hover:bg-gray-200 ${
+                  pathname === "/dashboard/our-story/about"
+                    ? "underline text-dark-500 font-semibold"
+                    : "text-gray-700 hover:text-yellow-900"
+                }`}
+              >
+                About
+              </Link>
+            </div>
           </div>
 
           <Link
             href="/dashboard/our-menu"
             className={`px-2 py-1 transition ${
               pathname === "/dashboard/our-menu"
-                ? "underline text-blue-500 font-semibold"
+                ? "underline dark-blue-500 font-semibold"
                 : "text-dark-700 hover:text-yellow-900"
             }`}
           >
@@ -93,14 +101,12 @@ export default function Page({ children }: PageProps) {
             href="/dashboard/store-locator"
             className={`px-2 py-1 transition ${
               pathname === "/dashboard/store-locator"
-                ? "underline text-blue-500 font-semibold"
+                ? "underline text-dark-500 font-semibold"
                 : "text-dark-700 hover:text-yellow-900"
             }`}
           >
             Store Locator
           </Link>
-
-      
         </nav>
       </header>
 

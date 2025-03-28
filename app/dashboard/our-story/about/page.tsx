@@ -1,5 +1,5 @@
 import React from 'react'
-import About from "@/components/about/about";
+import About from "@/components/our-story/about/about";
 import Dashboard from "@/components/dashboard";
 
 export default function Page() {
