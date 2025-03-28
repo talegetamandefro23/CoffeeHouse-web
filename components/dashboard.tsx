@@ -64,7 +64,7 @@ export default function Page({ children }: PageProps) {
                 Our Mission
               </Link>
               <Link
-                href="/dashboard/our-story/our-team"
+                href="/dashboard/our-story//our-team"
                 className={`block px-4 py-2 text-gray-700 hover:bg-gray-200 ${
                   pathname === ""
                     ? "underline text-dark-500 font-semibold"
